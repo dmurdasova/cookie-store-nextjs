@@ -13,7 +13,12 @@ export function Cookie({ item }: ICookieProps): JSX.Element {
         <Card className="cookie-card" title={<div data-testid="title">{item.title}</div>} hoverable>
             <div className="cookie-body">
                 <div className="cookie-body__image">
-                    <Image width="100%" height={HEIGHT} src="/cookie.png" preview={false}></Image>
+                    <Image
+                        alt="cookie"
+                        width="100%"
+                        height={HEIGHT}
+                        src="/cookie.png"
+                        preview={false}></Image>
                 </div>
                 {item.description && (
                     <div className="cookie-body__info" data-testid="description">

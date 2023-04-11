@@ -1,5 +1,5 @@
-import Main from '@ui/Main';
+import Store from '@/ui/store/Store';
 
 export default function Home() {
-    return <Main></Main>;
+    return <Store></Store>;
 }

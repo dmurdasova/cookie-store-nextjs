@@ -84,7 +84,9 @@ export function Filter(props: IFliterProps): JSX.Element {
 
     const FilterForm = (
         <Form className="filter" form={form} layout="vertical">
-            <Form.Item label="Search" tooltip={{ title: 'Enter someting...', icon: <SearchOutlined /> }}>
+            <Form.Item
+                label="Search"
+                tooltip={{ title: 'Enter someting...', icon: <SearchOutlined /> }}>
                 <Input value={currentFilter.term} onChange={handleInputChange} data-testid="term" />
             </Form.Item>
 
@@ -94,24 +96,21 @@ export function Filter(props: IFliterProps): JSX.Element {
                         data-testid="price-high-low"
                         type={selectedButton === 'price-high-low' ? 'primary' : 'default'}
                         onClick={() => handleQuickFilter('price-high-low', 'price', 'desc')}
-                        style={buttonsWidth}
-                    >
+                        style={buttonsWidth}>
                         Price: high to low
                     </Button>
                     <Button
                         data-testid="price-low-high"
                         type={selectedButton === 'price-low-high' ? 'primary' : 'default'}
                         onClick={() => handleQuickFilter('price-low-high', 'price', 'asc')}
-                        style={buttonsWidth}
-                    >
+                        style={buttonsWidth}>
                         Price: low to high
                     </Button>
                     <Button
                         data-testid="rating"
                         type={selectedButton === 'rating' ? 'primary' : 'default'}
                         onClick={() => handleQuickFilter('rating', 'rating', 'desc')}
-                        style={buttonsWidth}
-                    >
+                        style={buttonsWidth}>
                         Popular first
                     </Button>
                 </Space>
@@ -120,15 +119,16 @@ export function Filter(props: IFliterProps): JSX.Element {
             <Form.Item label="Toppings" name="toppingValues">
                 <Space className="filter_checkbox_container">
                     {toppings.map((topping) => {
-                        const checked = !!currentFilter.selectedToppings.find((x) => x === topping.id);
+                        const checked = !!currentFilter.selectedToppings.find(
+                            (x) => x === topping.id
+                        );
                         return (
                             <Checkbox
                                 data-testid={`topping-${topping.id}`}
                                 key={topping.id}
                                 value={topping.id}
                                 checked={checked}
-                                onClick={() => handleCheckboxChange(topping.id)}
-                            >
+                                onClick={() => handleCheckboxChange(topping.id)}>
                                 {topping.name}
                             </Checkbox>
                         );
@@ -144,16 +144,14 @@ export function Filter(props: IFliterProps): JSX.Element {
                         style={buttonsWidth}
                         type="primary"
                         icon={<SearchOutlined />}
-                        onClick={() => handleFilterChange(currentFilter)}
-                    >
+                        onClick={() => handleFilterChange(currentFilter)}>
                         Search
                     </Button>
                     <Button
                         data-testid="clear"
                         style={buttonsWidth}
                         icon={<DeleteOutlined />}
-                        onClick={() => clearFilter()}
-                    >
+                        onClick={() => clearFilter()}>
                         Clear
                     </Button>
                 </Space>

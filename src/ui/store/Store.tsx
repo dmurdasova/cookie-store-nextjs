@@ -4,7 +4,6 @@ import { Layout } from 'antd';
 import { ICookie } from '@domain/entities';
 import { DEFAULT_COOKIE_FILTER, ICookieFilter } from '@domain/ports';
 import { useGetCookies, useGetToppings } from '@secondary';
-// import './Main.scss';
 import { Cookie } from '../cookie/Cookie';
 import { Filter } from '../filter/Filter';
 import reducer, { initialState } from './reducer';
@@ -46,7 +45,10 @@ function Store(): JSX.Element {
         <React.Fragment>
             <Content className="filter-content">
                 <div className="filter-content__container">
-                    <Filter filter={filter} toppings={toppings} handleFilterChange={handleFilterChange}></Filter>
+                    <Filter
+                        filter={filter}
+                        toppings={toppings}
+                        handleFilterChange={handleFilterChange}></Filter>
                 </div>
             </Content>
 

@@ -12,6 +12,10 @@ const repository: IToppingRepository = {
             return Promise.resolve(cache);
         }
 
+        console.log(process.env)
+
+        console.log(API_URL);
+
         const response = await fetch(API_URL);
         const data = await response.json();
 

@@ -1,5 +1,10 @@
 import { ICookie } from '@domain/entities';
-import { DEFAULT_COOKIE_FILTER, ICookieFilter, ICookieRepository, INotificationService } from '@domain/ports';
+import {
+    DEFAULT_COOKIE_FILTER,
+    ICookieFilter,
+    ICookieRepository,
+    INotificationService
+} from '@domain/ports';
 import { DEFAULT_ERROR, hasMessage } from '../shared';
 
 type Deps = {
@@ -7,17 +12,16 @@ type Deps = {
     notificationService: INotificationService;
 };
 
-export async function getCookiesUseCase(filter: ICookieFilter, deps: Deps): Promise<readonly ICookie[]> {
+export async function getCookiesUseCase(
+    filter: ICookieFilter,
+    deps: Deps
+): Promise<readonly ICookie[]> {
     const { repository, notificationService } = deps;
     const mergedFilter = { ...DEFAULT_COOKIE_FILTER, ...filter };
-
-    console.log('get cookies use case');
 
     try {
         return await repository.get(mergedFilter);
     } catch (e) {
-        console.log('caught');
-
         const message = hasMessage(e) ? e.message : DEFAULT_ERROR;
         notificationService.notify(message, 'error');
         return [];

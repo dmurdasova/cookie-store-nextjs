@@ -1,4 +1,3 @@
-import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import {
     MenuFoldOutlined,
@@ -12,14 +11,13 @@ import { SelectInfo } from 'rc-menu/lib/interface';
 import React from 'react';
 import { useState } from 'react';
 
-const { Header, Sider, Footer } = Layout;
+const { Header, Sider, Footer, Content } = Layout;
 
 export default function App({ Component, pageProps }: AppProps) {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const router = useRouter();
 
     const handleMenuChange = ({ key }: SelectInfo): void => {
-        console.log(key);
         router.push(`/${key.toLowerCase()}`);
     };
 
@@ -59,7 +57,9 @@ export default function App({ Component, pageProps }: AppProps) {
                     Welcome to our cookie store
                 </Header>
 
-                <Component {...pageProps} />
+                <Content>
+                    <Component {...pageProps} />
+                </Content>
 
                 <FloatButton.BackTop />
 

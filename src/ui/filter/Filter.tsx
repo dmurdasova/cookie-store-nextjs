@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { ITopping } from '@domain/entities';
 import { ICookieFilter, SortOrder, SortType } from '@domain/ports';
 import { useWidthWatcher } from '@secondary';
-// import './Filter.scss';
+import styles from './Filter.module.scss';
 
 const { Panel } = Collapse;
 
@@ -83,7 +83,7 @@ export function Filter(props: IFliterProps): JSX.Element {
         );
 
     const FilterForm = (
-        <Form className="filter" form={form} layout="vertical">
+        <Form className={styles['filter']} form={form} layout="vertical">
             <Form.Item
                 label="Search"
                 tooltip={{ title: 'Enter someting...', icon: <SearchOutlined /> }}>
@@ -117,7 +117,7 @@ export function Filter(props: IFliterProps): JSX.Element {
             </Form.Item>
 
             <Form.Item label="Toppings" name="toppingValues">
-                <Space className="filter_checkbox_container">
+                <Space className={styles['filter_checkbox_container']}>
                     {toppings.map((topping) => {
                         const checked = !!currentFilter.selectedToppings.find(
                             (x) => x === topping.id

@@ -7,6 +7,7 @@ import { useGetCookies, useGetToppings } from '@secondary';
 import { Cookie } from '../cookie/Cookie';
 import { Filter } from '../filter/Filter';
 import reducer, { initialState } from './reducer';
+import styles from './Store.module.scss';
 
 const { Content } = Layout;
 
@@ -43,8 +44,8 @@ function Store(): JSX.Element {
 
     return (
         <React.Fragment>
-            <Content className="filter-content">
-                <div className="filter-content__container">
+            <Content className={styles['filter-content']}>
+                <div className={styles['filter-content__container']}>
                     <Filter
                         filter={filter}
                         toppings={toppings}
@@ -52,8 +53,8 @@ function Store(): JSX.Element {
                 </div>
             </Content>
 
-            <Content className="product-content">
-                <div className="product-content__container">
+            <Content className={styles['product-content']}>
+                <div className={styles['product-content__container']}>
                     {cookies.map((cookie: ICookie) => (
                         <Cookie key={cookie.id} item={cookie}></Cookie>
                     ))}

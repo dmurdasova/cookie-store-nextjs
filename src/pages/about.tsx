@@ -1,3 +1,3 @@
 export default function About(): JSX.Element {
-    return <h1>First Post</h1>;
+    return <p>Test application, based on DDD ideas, React and Next.js</p>;
 }

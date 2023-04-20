@@ -1,0 +1,36 @@
+$white: #fff;
+$big-font: 24px;
+$gap: 15px;
+
+.header-content {
+    padding: 0;
+    color: $white;
+    font-size: $big-font;
+    display: flex;
+    flex: 1 0 100%;
+    flex-direction: row;
+
+    .trigger {
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        width: 100%;
+        text-align: center;        
+    }
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    .layout {
+        height: 100%;
+        min-height: 100vh;
+
+        .site-layout__content {
+            padding: $gap;
+        }
+    }
+}

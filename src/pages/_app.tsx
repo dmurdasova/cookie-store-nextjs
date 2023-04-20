@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { SelectInfo } from 'rc-menu/lib/interface';
 import React from 'react';
 import { useState } from 'react';
+import '../styles/global.scss';
 
 const { Header, Sider, Footer, Content } = Layout;
 
@@ -21,22 +22,24 @@ export default function App({ Component, pageProps }: AppProps) {
         router.push(`/${key.toLowerCase()}`);
     };
 
+    const selected = router.route;
+
     return (
-        <Layout className="layout">
+        <Layout className="layout" hasSider={true}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <Menu
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={['']}
+                    defaultSelectedKeys={[selected]}
                     onSelect={handleMenuChange}
                     items={[
                         {
-                            key: '',
+                            key: '/',
                             icon: <UserOutlined />,
                             label: 'Main'
                         },
                         {
-                            key: 'about',
+                            key: '/about',
                             icon: <VideoCameraOutlined />,
                             label: 'About'
                         }
@@ -46,18 +49,20 @@ export default function App({ Component, pageProps }: AppProps) {
 
             <Layout className="site-layout">
                 <Header
-                    className="site-layout-background header-content"
+                    className="site-layout-background"
                     style={{
                         padding: 0
                     }}>
-                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                        className: 'trigger',
-                        onClick: () => setCollapsed(!collapsed)
-                    })}
-                    Welcome to our cookie store
+                    <div className="header-content">
+                        {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                            className: 'trigger',
+                            onClick: () => setCollapsed(!collapsed)
+                        })}
+                        <span className="header-content__title">Welcome to our cookie store</span>
+                    </div>
                 </Header>
 
-                <Content>
+                <Content className="site-layout__content">
                     <Component {...pageProps} />
                 </Content>
 
